@@ -55,52 +55,18 @@ string LargestMultipleOfThree(int[] digits)
             {
                 if (buffer.Remove(h))
                     if (buffer.Remove(h))
-                        CombinationCheck(buffer);
+                        if (buffer.Count > 0 && buffer.Sum() % 3 == 0)
+                            resultCombination = buffer.Select(x => x.ToString()).Aggregate((i, j) => i + j); ;
             }
             else
             {
                 if (buffer.Remove(h))
-                    CombinationCheck(buffer); 
+                    if (buffer.Count > 0 && buffer.Sum() % 3 == 0)
+                        resultCombination = buffer.Select(x => x.ToString()).Aggregate((i, j) => i + j); ;
             }
             
             if (resultCombination != string.Empty)
                 break;
         }
     }
-    void CombinationCheck(IEnumerable<int> array, params int[] param)
-    {
-        List<int> current = new List<int>(param);
-
-        if (array.Count() == 0)
-            if (current.Count > 0 && current.Sum() % 3 == 0)
-                resultCombination = current.Select(x => x.ToString()).Aggregate((i, j) => i + j); ;
-
-        for (int i = 0; i < array.Count(); i++)
-        {
-            List<int> buffer = new List<int>(array);
-            buffer.RemoveAt(i);
-            current.Add(array.ElementAt(i));
-            CombinationCheck(buffer, current.ToArray());
-
-            if (resultCombination != string.Empty)
-                break;
-        }
-    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
