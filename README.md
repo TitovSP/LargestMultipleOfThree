@@ -1,1 +1,1 @@
-# LeetCode 1363 - LargestMultipleOfThree
+# LeetCode 1363 - Largest Multiple Of Three
